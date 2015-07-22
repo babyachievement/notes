@@ -29,3 +29,28 @@
 
 ##垃圾回收器的特点
 安全并且能够被理解，
+
+
+##Genneration Collection
+内存分代
+weak generational hypothesis
+* Most allocated objects are not referenced(consideraed live) for long, that is, they die young
+* Few references from older to younger objects exist.
+
+年轻代的内存区通常较小，收集的频率较高并且收集速度比较快，是因为通常young generation space更小并且更有可能包含很多不再引用的对象
+
+存活过相当数量的年轻代的收集器收集周期的年轻代的对象将最终被升级到老年代，old generatin space通常更大，所占的空间增长更慢，老年代的收集器收集的频率更低，但耗费的时间相对要长。
+
+##Garbage collectors in J2SE 5.0 HotSpot JVM
+Java HotSpot 虚拟机包含4个收集器.
+
+###HotSpot Generation
+HotSport虚拟机将内存划分为3代，young generation， old generation， permanent generation。
+
+Young generation包含一个Eden 区和两个survivor区，
+The young generation consists of an area called Eden plus two smaller survivor spaces, as shown in Figure 2.
+Most objects are initially allocated in Eden. (As mentioned, a few large objects may be allocated directly in the
+old generation.) The survivor spaces hold objects that have survived at least one young generation collection
+and have thus been given additional chances to die before being considered “old enough” to be promoted to the
+old generation. At any given time, one of the survivor spaces (labeled From in the figure) holds such objects,
+while the other is empty and remains unused until the next collection.
