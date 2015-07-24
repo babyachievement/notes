@@ -54,3 +54,8 @@ old generation.) The survivor spaces hold objects that have survived at least on
 and have thus been given additional chances to die before being considered “old enough” to be promoted to the
 old generation. At any given time, one of the survivor spaces (labeled From in the figure) holds such objects,
 while the other is empty and remains unused until the next collection.
+
+
+The young generation collector is a copying collector. The young generation is divided into 3 spaces: eden-space, to-space, and from-space. Allocations are done from eden-space and from-space. When those are full a young generation is collection is done. The expectation is that most of the objects are garbage and any surviving objects can be copied to to-space. If there are more surviving objects than can fit into to-space, the remaining objects are copied into the tenured generation. There is an option to collect the young generation in parallel.
+ 
+ The tenured generation is collected with a mark-sweep-compact collection. There is an option to collect the tenured generation concurrently.
