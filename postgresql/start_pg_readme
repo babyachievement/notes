@@ -1,0 +1,22 @@
+
+查看现有的数据库
+./psql -l
+
+initdb -D 数据文件夹
+
+创建一个数据库
+./createdb demoDB
+
+
+Success. You can now start the database server using:
+    ./postgres -D /home/alvin/pgdata
+    or
+        ./pg_ctl -D /home/alvin/pgdata -l logfile start
+
+连接数据库
+./psql demoD 
+
+
+
+关闭数据库
+./pg_ctl stop -D /home/alvin/pgdata
