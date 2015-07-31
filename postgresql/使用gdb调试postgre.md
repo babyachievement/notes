@@ -28,8 +28,7 @@ src/Makefile.Global
 
 从以上得到后端进程的进程ID
 
-    $ sudo  gdb postgres 11285                                                                                                                                [10:37:19]
-    [sudo] password for alvin: 
+    alvin:bin/ $ sudo gdb postgres 11285                                                                                                                                 [10:48:24]
     GNU gdb (Ubuntu 7.7.1-0ubuntu5~14.04.2) 7.7.1
     Copyright (C) 2014 Free Software Foundation, Inc.
     License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -44,9 +43,8 @@ src/Makefile.Global
     <http://www.gnu.org/software/gdb/documentation/>.
     For help, type "help".
     Type "apropos word" to search for commands related to "word"...
-    postgres: 没有那个文件或目录.
-    Attaching to process 11285
-    Reading symbols from /usr/local/postgresql-9.4.4/bin/postgres...done.
+    Reading symbols from postgres...done.
+    Attaching to program: /usr/local/postgresql-9.4.4/bin/postgres, process 11285
     Reading symbols from /lib/x86_64-linux-gnu/librt.so.1...Reading symbols from /usr/lib/debug//lib/x86_64-linux-gnu/librt-2.19.so...done.
     done.
     Loaded symbols for /lib/x86_64-linux-gnu/librt.so.1
@@ -73,11 +71,6 @@ src/Makefile.Global
     0x00007f9c1d10438d in __libc_recv (fd=8, buf=buf@entry=0xc01880 <PqRecvBuffer>, n=n@entry=8192, flags=-1, flags@entry=0) at ../sysdeps/unix/sysv/linux/x86_64/recv.c:29
     29  ../sysdeps/unix/sysv/linux/x86_64/recv.c: 没有那个文件或目录.
     (gdb) 
-
-    (gdb) b ExecResult
-    Breakpoint 1, ExecResult (node=0xd13eb0) at nodeResult.c:75
-    (gdb) 
-
 
 
 
