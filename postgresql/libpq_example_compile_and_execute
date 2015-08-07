@@ -1,0 +1,2 @@
+gcc testlibpq.c -I /usr/local/pgsql9.2.3/include/ -L /usr/local/pgsql9.2.3/lib/ -lpq
+./a.out postgresql://localhost:5432/postgres
