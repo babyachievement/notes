@@ -16,8 +16,8 @@ import java.util.Random;
  */
 
 class Initable{
-    static final int staticFinal = 47;
-    static final int staticFinal2 = ClassInitialization.rand.nextInt(1000);
+    static final int staticFinal = 47; //编译期常量
+    static final int staticFinal2 = ClassInitialization.rand.nextInt(1000); //非编译期常量
     static {
         System.out.println("Initializing Initable");
     }
@@ -49,9 +49,13 @@ public class ClassInitialization {
         System.out.println(Initable.staticFinal2);
         // Dose trigger initialization
         System.out.println(Initable2.staticNonFinal);
-        Class initable3 = Class.forName("com.oneapm.si.rtti.Initable3");
+        Class initable3 = Class.forName("com.oneapm.si.rtti.Initable3"); // 为了产生Class引用，Class.forName立即进行了初始化
         System.out.println("After creating Initable3 ref");
         System.out.println(Initable3.staticNonFinal);
     }
 }
 ```
+
+1. static final值是“编译期常量”这个值不需要初始化就能读取；
+2. 如果是static final域，但不是编译期常量，也需要初始化；
+3. static 非final域，访问它时，总要求它在被读取之前先进行链接（为这个域分配存储空间）和初始化（初始化该存储空间）。
