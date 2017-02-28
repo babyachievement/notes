@@ -35,3 +35,6 @@ AnyRef是所有引用类型的父类，每个用户自定义的类都隐式地�
 ## 11. 嵌套函数
  
 Scala的函数中可以嵌套函数。
+
+
+[1] [Scala教程](http://docs.scala-lang.org/tutorials/)
