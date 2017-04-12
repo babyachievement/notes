@@ -5,3 +5,6 @@
 
 
 this逃逸经常发生在构造函数中启动线程或注册监听器时。
+
+
+[Safe construction techniques](https://www.ibm.com/developerworks/java/library/j-jtp0618/index.html)
