@@ -1,0 +1,41 @@
+# 高级优化(advanced optimization)
+
+如何使得逻辑回归的梯度下降更快地收敛,如何解决大型的机器学习问题，比如当存在大量特征时。
+
+除了梯度下降算法外，还有一些更复杂但更快的算法来计算代价函数，代价函数的偏导。
+优化算法：
+* 共轭梯度(conjugate gradient)
+* BFGS
+* L-BFGS
+
+这些算法不需要手动选择学习速率$\alpha$，通常比梯度下降更快，但缺点就是更复杂。
+
+如何使用这些算法：
+
+$$
+\begin{align}
+& \theta = \begin{bmatrix} \theta_1\\ \theta_2\end{bmatrix} \\
+& J(\theta) = (\theta_1-5)^2 + (\theta_2-5)^2\\
+& \frac{\partial}{\partial\theta_1}J(\theta) = 2(\theta_1-5) \\
+& \frac{\partial}{\partial\theta_2}J(\theta) = 2(\theta_2-5)
+\end{align}
+$$
+
+通过最小化$minJ(\theta)可以求得\theta_1 = 5, \theta_2=5$，根据以上公式我们实现octave函数，这个函数返回两个值，jVal是代价函数值，gradient是梯度值：
+
+```
+function [jVal, gradient] = costFunction(theta)
+  jVal = (theta(1)-5)^2 + (theta(2)-5)^2;
+  gradient = zeros(2,1);
+  gradient(1) = 2*(theta(1)-5);
+  gradient(2) = 2*(theta(2)-5);
+```
+
+然后使用高级优化函数计算参数值：
+
+```
+options = optimset('GradObj', 'on', 'MaxIter', '100'); % 'GradObj', 'on'设置梯度目标参数打开，MaxIter迭代次数100次
+initialTheta = zeros(2,1);
+[optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
+```
+![costFunction](./images/6_6-1.png)
